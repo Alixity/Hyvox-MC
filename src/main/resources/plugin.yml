@@ -24,3 +24,6 @@ commands:
   setrank:
     description: set rank to a player.
     usage: /<command> <player> <rank>
+  givespawnegg:
+    description: Give Custom Mob SpawnEgg.
+    usage: /<command> <customMob>
