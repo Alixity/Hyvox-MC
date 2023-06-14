@@ -1,6 +1,8 @@
 package me.foca.hyvox;
 
 import me.foca.hyvox.Engine.ConfigSystem.CustomConfig;
+import me.foca.hyvox.Engine.CustomMob.Commands.GiveCustomEggCommand;
+import me.foca.hyvox.Engine.CustomMob.CustomMob;
 import me.foca.hyvox.VirtualPlugin.RankSystem.Commands.SetRankCommand;
 import me.foca.hyvox.VirtualPlugin.RankSystem.Commands.TestCommand;
 import me.foca.hyvox.VirtualPlugin.RankSystem.RankListener;
@@ -36,6 +38,7 @@ public final class Hyvox extends JavaPlugin {
 
         RegisterListener();
         RegisterCommands();
+        CustomMob.RegisterCustomMob();
     }
 
     @Override
@@ -66,6 +69,7 @@ public final class Hyvox extends JavaPlugin {
         getCommand("staff").setExecutor(new StaffMenuCommands());
         getCommand("setrank").setExecutor(new SetRankCommand());
         getCommand("test").setExecutor(new TestCommand());
+        getCommand("givespawnegg").setExecutor(new GiveCustomEggCommand());
         System.out.println("Conclusa");
 
     }
