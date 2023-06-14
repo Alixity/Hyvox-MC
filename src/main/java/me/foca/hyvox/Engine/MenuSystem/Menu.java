@@ -47,7 +47,7 @@ public abstract class Menu implements InventoryHolder {
     public void FillWithNullItem(){
         for (int i = 0; i < getSlots(); i++){
             if (inventory.getItem(i) == null)
-                inventory.setItem(i, Null_Item);
+                inventory.setItem(i, setEmptySlotItem());
 
         }
     }
@@ -93,5 +93,16 @@ public abstract class Menu implements InventoryHolder {
 
     public PlayerMenuUtility getPlayerMenuUtility(Player player){
         return Hyvox.getPlayerMenuUtility(player);
+    }
+
+    public ItemStack setEmptySlotItem(){
+        ItemStack empty_item = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
+        ItemMeta empty_itemMeta = empty_item.getItemMeta();
+
+
+        empty_itemMeta.setDisplayName(" ");
+        empty_item.setItemMeta(empty_itemMeta);
+
+        return  empty_item;
     }
 }

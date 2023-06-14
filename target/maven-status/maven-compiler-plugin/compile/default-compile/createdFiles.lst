@@ -33,6 +33,7 @@ me\foca\hyvox\VirtualPlugin\Staff\Menu\BanMenu.class
 me\foca\hyvox\Utility\StringUtility.class
 me\foca\hyvox\VirtualPlugin\Staff\Commands\FlyCommand.class
 me\foca\hyvox\VirtualPlugin\Utility\UtilityListener.class
+me\foca\hyvox\Engine\MenuSystem\Utilty\MenuUtility.class
 me\foca\hyvox\Listeners\PlayerListener.class
 me\foca\hyvox\VirtualPlugin\Staff\Menu\StaffMenu$1.class
 me\foca\hyvox\Utility\MiscUtils.class

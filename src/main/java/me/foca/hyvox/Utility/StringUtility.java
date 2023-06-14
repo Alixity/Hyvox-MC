@@ -7,10 +7,9 @@ import java.text.MessageFormat;
 
 public class StringUtility {
 
-    public static boolean SendCommandError(Player player, String permission){
+    public static void SendCommandError(Player player, String permission){
 
-        player.sendMessage(ChatColor.RED + "Non hai il permesso " + MessageFormat.format("(hyvox.{0})", permission) + " per eseguire questa azione");
-        return true;
+        player.sendMessage(ChatColor.RED + "Non hai il permesso " + " (hyvox." + permission + ") per eseguire questa azione");
     }
 
     public static String addColor(ChatColor color, String string){
