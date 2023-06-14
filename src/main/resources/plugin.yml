@@ -1,0 +1,26 @@
+name: Hyvox
+version: '${project.version}'
+main: me.foca.hyvox.Hyvox
+api-version: 1.19
+commands:
+  fly:
+    description: Vola libero come un uccellino.
+    usage: /<command>
+  god:
+    description: Diventa come Teo!
+    usage: /<command>
+  misc:
+    description: Apri il menu dei Misc.
+    usage: /<command>
+  utility:
+    description: Apri il menu Utility.
+    usage: /<command>
+  staff:
+    description: Apri il menu Staff.
+    usage: /<command>
+  test:
+    description: test command.
+    usage: /<command>
+  setrank:
+    description: set rank to a player.
+    usage: /<command> <player> <rank>
