@@ -54,6 +54,16 @@ public class PlayerListMenu extends Menu {
         }
     }
 
+    @Override
+    public boolean preventFromTakeItem() {
+        return true;
+    }
+
+    @Override
+    public boolean preventCreatingNullItem() {
+        return false;
+    }
+
     public static ArrayList<String> setPlayerHeadLore(){
         ArrayList<String> lore = new ArrayList<>();
 

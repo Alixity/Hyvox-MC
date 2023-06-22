@@ -19,7 +19,7 @@ public class CustomMobUtility {
         ItemStack egg = setCustomEgg(customMob.getMobType());
         ItemMeta eggMeta = egg.getItemMeta();
 
-        eggMeta.setDisplayName(customMob.getMobName() + StringUtility.addColor(ChatColor.RED, "Spawn Egg"));
+        eggMeta.setDisplayName(customMob.getMobName() + StringUtility.addBold(" Spawn Egg"));
         eggMeta.setLore(Arrays.asList("Spawn Egg for: " + StringUtility.addColor(ChatColor.RED, customMob.getMobName())));
         egg.setItemMeta(eggMeta);
 

@@ -48,4 +48,14 @@ public class ConfirmSuicideMenu extends Menu {
         inventory.setItem(3, CreateItem(ChatColor.GREEN + "" + ChatColor.BOLD + "Si", Material.GREEN_WOOL, 1, new ArrayList<>()));
         inventory.setItem(5, CreateItem(ChatColor.RED + "" + ChatColor.BOLD + "No", Material.RED_WOOL, 1, new ArrayList<>()));
     }
+
+    @Override
+    public boolean preventFromTakeItem() {
+        return true;
+    }
+
+    @Override
+    public boolean preventCreatingNullItem() {
+        return false;
+    }
 }

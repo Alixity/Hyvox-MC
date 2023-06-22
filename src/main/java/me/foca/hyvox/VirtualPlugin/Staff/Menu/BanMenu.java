@@ -22,7 +22,7 @@ public class BanMenu extends Menu {
 
     @Override
     public String getMenuName() {
-        return ChatColor.RED + "Ban Menu";
+        return ChatColor.DARK_PURPLE + "Ban Menu";
     }
 
     @Override
@@ -49,6 +49,16 @@ public class BanMenu extends Menu {
     public void setMenuItems() {
         inventory.setItem(3, CreateItem(ChatColor.GREEN + "Conferma", Material.GREEN_WOOL, 1, addConfirmLore(true)));
         inventory.setItem(5, CreateItem(ChatColor.RED + "Annulla", Material.RED_WOOL, 1, addConfirmLore(false)));
+    }
+
+    @Override
+    public boolean preventFromTakeItem() {
+        return true;
+    }
+
+    @Override
+    public boolean preventCreatingNullItem() {
+        return false;
     }
 
     public String addConfirmLore(Boolean state){

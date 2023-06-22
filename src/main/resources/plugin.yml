@@ -24,6 +24,12 @@ commands:
   setrank:
     description: set rank to a player.
     usage: /<command> <player> <rank>
-  givespawnegg:
+  givebomberspawnegg:
     description: Give Custom Mob SpawnEgg.
     usage: /<command> <customMob>
+  calc:
+    description: Calcolate number;
+    usage: /<command> <first_number> <operator> <second_number>
+  priv:
+    description: get priv commands
+    usage: /<command> <subcommand> <args[]>

@@ -61,4 +61,14 @@ public class PlayerOptionMenu extends Menu {
         inventory.setItem(14, ItemUtils.createGodModeChestplate(SelectedPlayer));
         inventory.setItem(44, CreateItem(StringUtility.addColor(ChatColor.RED, "Esci"), Material.BARRIER, 1, ""));
     }
+
+    @Override
+    public boolean preventFromTakeItem() {
+        return true;
+    }
+
+    @Override
+    public boolean preventCreatingNullItem() {
+        return false;
+    }
 }

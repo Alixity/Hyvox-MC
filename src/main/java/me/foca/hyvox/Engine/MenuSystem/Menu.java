@@ -35,6 +35,10 @@ public abstract class Menu implements InventoryHolder {
 
     public abstract void setMenuItems();
 
+    public abstract boolean preventFromTakeItem();
+
+    public abstract boolean preventCreatingNullItem();
+
     public void open(){
         inventory = Bukkit.createInventory(this, getSlots(), getMenuName());
 
@@ -45,11 +49,13 @@ public abstract class Menu implements InventoryHolder {
     }
 
     public void FillWithNullItem(){
-        for (int i = 0; i < getSlots(); i++){
-            if (inventory.getItem(i) == null)
-                inventory.setItem(i, setEmptySlotItem());
 
-        }
+        if (!preventCreatingNullItem())
+            for (int i = 0; i < getSlots(); i++){
+                if (inventory.getItem(i) == null)
+                    inventory.setItem(i, setEmptySlotItem());
+
+            }
     }
 
     public ItemStack CreateItem(@NonNull String DisplayName, @NonNull Material material, int amount, @Nullable String... lore){

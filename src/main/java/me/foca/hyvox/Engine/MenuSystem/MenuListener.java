@@ -12,7 +12,9 @@ public class MenuListener implements Listener {
         InventoryHolder holder = e.getInventory().getHolder();
 
         if (holder instanceof Menu && e.getCurrentItem() != null) {
-            e.setCancelled(true);
+
+            if (((Menu) holder).preventFromTakeItem())
+                e.setCancelled(true);
             ((Menu) holder).handleMenu(e);
         }
     }

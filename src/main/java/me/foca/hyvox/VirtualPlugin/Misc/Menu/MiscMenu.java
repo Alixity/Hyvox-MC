@@ -59,6 +59,16 @@ public class MiscMenu extends Menu {
         inventory.setItem(5, CreateSuicideTnT());
     }
 
+    @Override
+    public boolean preventFromTakeItem() {
+        return true;
+    }
+
+    @Override
+    public boolean preventCreatingNullItem() {
+        return false;
+    }
+
     public static ItemStack CreateTeleportBow(){
 
         ItemStack bow = new ItemStack(Material.BOW, 1);

@@ -1,12 +1,21 @@
 package me.foca.hyvox;
 
 import me.foca.hyvox.Engine.ConfigSystem.CustomConfig;
+import me.foca.hyvox.Engine.CustomEvents.Events.CustomEventListener;
+import me.foca.hyvox.Engine.CustomItems.CustomItemListener;
 import me.foca.hyvox.Engine.CustomMob.Commands.GiveCustomEggCommand;
-import me.foca.hyvox.Engine.CustomMob.CustomMob;
+import me.foca.hyvox.Engine.CustomMob.CustomMobListener;
+import me.foca.hyvox.VirtualPlugin.CropsEdit.CropsListener;
+import me.foca.hyvox.VirtualPlugin.CustomCookItem.CustomCookItems;
+import me.foca.hyvox.VirtualPlugin.CustomItems.Backpack.Backpack;
+import me.foca.hyvox.VirtualPlugin.PrivateCommands.PrivateCommandsManager;
 import me.foca.hyvox.VirtualPlugin.RankSystem.Commands.SetRankCommand;
 import me.foca.hyvox.VirtualPlugin.RankSystem.Commands.TestCommand;
 import me.foca.hyvox.VirtualPlugin.RankSystem.RankListener;
+import me.foca.hyvox.VirtualPlugin.CustomItems.RegisterCustomItem;
+import me.foca.hyvox.VirtualPlugin.ServerUtility.Commands.CalculatorCommand;
 import me.foca.hyvox.VirtualPlugin.ServerUtility.Listener.ServerListener;
+import me.foca.hyvox.VirtualPlugin.SpawnerUtility.SpawnerUtilityListener;
 import me.foca.hyvox.VirtualPlugin.Staff.Commands.FlyCommand;
 import me.foca.hyvox.VirtualPlugin.Staff.Commands.GodCommand;
 import me.foca.hyvox.VirtualPlugin.Misc.Commands.MiscCommand;
@@ -38,7 +47,8 @@ public final class Hyvox extends JavaPlugin {
 
         RegisterListener();
         RegisterCommands();
-        CustomMob.RegisterCustomMob();
+        RegisterMisc();
+        CustomCookItems.start();
     }
 
     @Override
@@ -53,6 +63,9 @@ public final class Hyvox extends JavaPlugin {
         getConfig().options().copyDefaults();
         saveDefaultConfig();
 
+        Backpack.setup();
+        Backpack.get().options().copyDefaults(true);
+        Backpack.save();
 
         CustomConfig.setup();
         CustomConfig.getRankConfig().options().copyDefaults(true);
@@ -69,7 +82,9 @@ public final class Hyvox extends JavaPlugin {
         getCommand("staff").setExecutor(new StaffMenuCommands());
         getCommand("setrank").setExecutor(new SetRankCommand());
         getCommand("test").setExecutor(new TestCommand());
-        getCommand("givespawnegg").setExecutor(new GiveCustomEggCommand());
+        getCommand("givebomberspawnegg").setExecutor(new GiveCustomEggCommand());
+        getCommand("calc").setExecutor(new CalculatorCommand());
+        getCommand("priv").setExecutor(new PrivateCommandsManager());
         System.out.println("Conclusa");
 
     }
@@ -81,8 +96,18 @@ public final class Hyvox extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new MiscListener(), this);
         getServer().getPluginManager().registerEvents(new MenuListener(), this);
         getServer().getPluginManager().registerEvents(new RankListener(), this);
+        getServer().getPluginManager().registerEvents(new CustomMobListener(this), this);
+        getServer().getPluginManager().registerEvents(new CustomEventListener(), this);
+        getServer().getPluginManager().registerEvents(new SpawnerUtilityListener(), this);
+        getServer().getPluginManager().registerEvents(new CropsListener(), this);
+        getServer().getPluginManager().registerEvents(new CustomItemListener(), this);
         System.out.println("Conclusa");
     }
+
+    public void RegisterMisc(){
+        new RegisterCustomItem();
+    }
+
 
     public static PlayerMenuUtility getPlayerMenuUtility(Player p){
         PlayerMenuUtility playerMenuUtility;
